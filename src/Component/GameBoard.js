@@ -12,7 +12,7 @@ import {
 } from "../Utils/onKeyPressed";
 
 function GameBoard(props) {
-	const { sideLength, changeScore, newGame } = props;
+	const { sideLength, changeScore, setScore, newGame } = props;
 	const [tileValueArray, setTileValueArray] = useState([]);
 	const [gameOver, setGameOver] = useState(false);
 
@@ -29,7 +29,7 @@ function GameBoard(props) {
 		twoAtRandom(array);
 		twoAtRandom(array);
 		setTileValueArray(array);
-		changeScore(0);
+		setScore(0);
 	}
 
 	// Initializing the Array
