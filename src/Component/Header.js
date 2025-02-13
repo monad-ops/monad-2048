@@ -1,37 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { useLocalStorage } from "../Utils/useLocalStorage";
 
 function Header(props) {
 	const { sideLength, changeSideLength, score, newGame, tryNewGame } = props;
-
-	const [toggleSideLength, setToggleSideLength] = useState(true);
-	function handleToggleSideLength(bool) {
-		setToggleSideLength(!bool);
-		bool ? changeSideLength(4) : changeSideLength(8);
-	}
-	const [bestScore, setBestScore] = useLocalStorage("bestScore", 0);
-	let finalScore = Math.max(score, bestScore);
-	useEffect(() => {
-		setBestScore(finalScore);
-	}, [finalScore]);
+	const MONEarned = (Math.round(score * 1) / 10000).toFixed(4);
+	;
 	return (
 		<header className="header" id="header">
 			<div className="header_left">
 				<div
 					className="header_title highlight_text"
-					onClick={() => {
-						handleToggleSideLength(toggleSideLength);
-					}}
+					onClick={() => {}}
 				>
-					{sideLength === 4 ? 2048 : 4096}
+					2048Nads
 				</div>
 				<div className="header_subtitle">
 					<div>
 						Join the tiles, get to
 						<span className="highlight_text">
-							{" "}
-							{sideLength === 4 ? 2048 : 4096}!{" "}
+							{" 2048!"}
 						</span>
 					</div>
 					<a href="#footer">
@@ -45,12 +32,8 @@ function Header(props) {
 			<div className="header_right">
 				<div className="score_board">
 					<div className="score">
-						<span className="score_head">SCORE</span>
-						<span className="score_value"> {score} </span>
-					</div>
-					<div className="score">
-						<span className="score_head">BEST</span>
-						<span className="score_value"> {bestScore} </span>
+						<span className="score_head">MON Earned</span>
+						<span className="score_value"> {MONEarned} </span>
 					</div>
 				</div>
 				<div className="btn_container">

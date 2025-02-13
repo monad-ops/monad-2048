@@ -6,17 +6,15 @@ import GameBoard from "./Component/GameBoard";
 import VisitCount from "./Component/VisitCount";
 
 function App() {
-	const [sideLength, setSideLength] = useState(4);
+	const sideLength = 4;
 	const [newGame, setNewGame] = useState(true);
 	const [score, setScore] = useState(0);
-	const changeBoardSideLength = (length) => {
-		setSideLength(length);
-	};
 	const changeScore = (value) => {
 		setScore((preValue) => preValue + value);
 	};
 	function tryNewGame(bool) {
 		setNewGame(bool);
+		setScore(0);
 	}
 
 	return (
@@ -24,8 +22,6 @@ function App() {
 			<VisitCount />
 			<div className="game_container">
 				<Header
-					sideLength={sideLength}
-					changeSideLength={changeBoardSideLength}
 					score={score}
 					newGame={newGame}
 					tryNewGame={tryNewGame}
@@ -33,6 +29,7 @@ function App() {
 				<GameBoard
 					sideLength={sideLength}
 					changeScore={changeScore}
+					setScore={setScore}
 					newGame={newGame}
 				/>
 				<Footer sideLength={sideLength} />
